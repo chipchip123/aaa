@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 4 – Requirement Modelling Quiz (100 MCQs)</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#eef2f7;
+  margin:0;
+}
+.container{
+  max-width:900px;
+  margin:30px auto;
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+h1{text-align:center;color:#2c3e50}
+.progress{text-align:right;color:#555;margin-bottom:10px}
+.question{font-size:18px;font-weight:bold;margin-bottom:15px}
+.option{
+  padding:12px;
+  background:#f2f4f8;
+  border-radius:6px;
+  margin-bottom:10px;
+  cursor:pointer;
+}
+.option:hover{background:#e1e7ef}
+.correct{background:#2ecc71;color:white}
+.wrong{background:#e74c3c;color:white}
+.explain{
+  margin-top:15px;
+  padding:15px;
+  background:#fff3cd;
+  border-left:5px solid #f39c12;
+  display:none;
+}
+button{
+  margin-top:20px;
+  padding:12px 22px;
+  font-size:16px;
+  border:none;
+  background:#3498db;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  display:none;
+}
+button:hover{background:#2980b9}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>📘 Requirement Modelling – 100 MCQs</h1>
+<div class="progress" id="progress"></div>
+<div class="question" id="question"></div>
+<div id="options"></div>
+<div class="explain" id="explain"></div>
+<button id="nextBtn" onclick="nextQuestion()">Next ➡️</button>
+</div>
+
+<script>
+const questions = [
+
+/* ========= REQUIREMENTS ========= */
+{q:"A requirement describes:",o:["HOW the system is implemented","WHAT the system must do","Source code","Database schema"],a:1,e:"Keyword: WHAT → Requirement. NOT implementation (HOW)."},
+{q:"Which is a system characteristic?",o:["Programming language","Performance","Framework","Algorithm"],a:1,e:"Keyword: system characteristic → Requirement."},
+{q:"Which is NOT a requirement?",o:["What the system must do","System characteristic","How the system will be implemented","User goal"],a:2,e:"Keyword: HOW → NOT requirement."},
+{q:"The most critical step of SDLC is:",o:["Design","Implementation","Requirements determination","Testing"],a:2,e:"Keyword: most critical step → Requirements determination."},
+{q:"More than 50% of system failures are due to:",o:["Coding errors","Testing errors","Requirements problems","Deployment issues"],a:2,e:"Keyword: 50% failures → requirements."},
+{q:"As-is system refers to:",o:["Proposed system","Future system","Current system","Ideal system"],a:2,e:"Keyword: As-is → current system."},
+{q:"To-be system refers to:",o:["Current system","Legacy system","Proposed system","Broken system"],a:2,e:"Keyword: To-be → proposed system."},
+{q:"Iterative and incremental development belongs to:",o:["Waterfall","OOSAD","Testing phase","Deployment"],a:1,e:"Keyword: Iterative / Incremental → OOSAD."},
+
+/* ========= TYPES OF REQUIREMENTS ========= */
+{q:"Process requirements are classified as:",o:["Functional","Non-functional","Security","Usability"],a:0,e:"Keyword: process → Functional."},
+{q:"Data requirements are classified as:",o:["Non-functional","Functional","Reliability","Usability"],a:1,e:"Keyword: data → Functional."},
+{q:"Performance requirements are:",o:["Functional","Non-functional","Process","Business logic"],a:1,e:"Keyword: performance → Non-functional."},
+{q:"Usability requirements are:",o:["Functional","Process","Non-functional","Data"],a:2,e:"Keyword: usability → Non-functional."},
+{q:"Security requirements are:",o:["Functional","Non-functional","Process","Data"],a:1,e:"Keyword: quality → Non-functional."},
+{q:"Reliability requirements are:",o:["Functional","Non-functional","Process","Business"],a:1,e:"Keyword: reliability → Non-functional."},
+{q:"WHAT equals:",o:["Non-functional","Functional","Implementation","UI"],a:1,e:"Keyword: WHAT = Functional."},
+{q:"HOW (quality attributes) equals:",o:["Functional","Non-functional","Process","Data"],a:1,e:"Keyword: HOW = Non-functional."},
+
+/* ========= REQUIREMENTS DEFINITION ========= */
+{q:"Requirements definition includes:",o:["Only functional requirements","Only non-functional requirements","Functional and non-functional requirements","Source code"],a:2,e:"Keyword: Functional + Non-functional list."},
+{q:"Requirements definition primarily defines:",o:["Database schema","System scope","UI layout","Algorithms"],a:1,e:"Keyword: defines system scope."},
+{q:"Requirements definition is an input for:",o:["Design and later phases","Testing only","Deployment","Maintenance only"],a:0,e:"Keyword: input for later phases."},
+{q:"Outline format means:",o:["Detailed code","Bullet list","UI prototype","ER diagram"],a:1,e:"Keyword: outline format = list."},
+{q:"Prioritized requirements means:",o:["Deleted requirements","Ordered by importance","Implemented first","Tested last"],a:1,e:"Keyword: prioritized requirements."},
+
+/* ========= REQUIREMENTS DETERMINATION ========= */
+{q:"Requirements determination involves:",o:["Developers only","Analysts and users","Testers only","Managers only"],a:1,e:"Keyword: analyst + users."},
+{q:"Requirements are best identified by:",o:["Business only","IT only","Business and IT collaboration","Customers only"],a:2,e:"Keyword: Business + IT collaboration."},
+{q:"Scope creep refers to:",o:["Stable requirements","A major risk","An analysis strategy","A testing technique"],a:1,e:"Keyword: scope creep → risk."},
+
+/* ========= ANALYSIS STRATEGIES ========= */
+{q:"Which strategy involves the least change?",o:["BPA","BPI","BPR","Agile"],a:0,e:"Keyword: least change → BPA."},
+{q:"Automating the current system is:",o:["BPA","BPI","BPR","JAD"],a:0,e:"Keyword: automate current system → BPA."},
+{q:"Which strategy involves moderate change?",o:["BPA","BPI","BPR","Waterfall"],a:1,e:"Keyword: moderate change → BPI."},
+{q:"Improving efficiency without redesign is:",o:["BPA","BPI","BPR","Interview"],a:1,e:"Keyword: improve efficiency → BPI."},
+{q:"Which strategy involves the most change?",o:["BPA","BPI","BPR","Scrum"],a:2,e:"Keyword: most change → BPR."},
+{q:"Redesigning the entire system is:",o:["BPA","BPI","BPR","Testing"],a:2,e:"Keyword: redesign system → BPR."},
+{q:"Focusing on the to-be system is:",o:["BPA","BPI","BPR","Interview"],a:2,e:"Keyword: to-be → BPR."},
+{q:"Correct order of change level is:",o:["BPR < BPI < BPA","BPA < BPI < BPR","BPI < BPA < BPR","BPR < BPA < BPI"],a:1,e:"Keyword: BPA < BPI < BPR."},
+
+/* ========= REQUIREMENTS GATHERING ========= */
+{q:"The most popular requirements gathering technique is:",o:["Questionnaires","Interviews","Observation","JAD"],a:1,e:"Keyword: most popular → Interviews."},
+{q:"Which technique is suitable for large populations?",o:["Interviews","Questionnaires","Observation","JAD"],a:1,e:"Keyword: large population → Questionnaires."},
+{q:"Watching users perform tasks is:",o:["Document analysis","Interview","Observation","JAD"],a:2,e:"Keyword: watch users → Observation."},
+{q:"A group meeting with users and analysts is:",o:["Interview","Observation","JAD","Questionnaire"],a:2,e:"Keyword: group meeting → JAD."},
+{q:"Analyzing forms and reports is:",o:["Interview","Document analysis","Observation","JAD"],a:1,e:"Keyword: as-is documents → Document analysis."},
+
+/* ========= INTERVIEWS ========= */
+{q:"Open-ended questions are used in:",o:["Questionnaires","Interviews","Observation","JAD"],a:1,e:"Keyword: open-ended → Interviews."},
+{q:"Closed-ended questions are used in:",o:["Document analysis","Interviews","Observation","Testing"],a:1,e:"Keyword: closed-ended → Interviews."},
+{q:"Probing questions are used to:",o:["Limit answers","Clarify details","Skip topics","End interviews"],a:1,e:"Keyword: probing → clarify."},
+{q:"Top-down interview strategy starts with:",o:["Details","Specifics","General questions","Technical issues"],a:2,e:"Keyword: top-down → general to specific."},
+{q:"Bottom-up interview strategy starts with:",o:["General questions","High-level goals","Details","Business vision"],a:2,e:"Keyword: bottom-up → details first."},
+
+/* ========= USE-CASE DIAGRAM ========= */
+{q:"A use-case diagram shows:",o:["Database structure","User perspective","Program flow","UI layout"],a:1,e:"Keyword: user perspective → Use-case diagram."},
+{q:"Use-case diagrams define:",o:["Source code","System boundary","Algorithms","UI color"],a:1,e:"Keyword: defines system boundary."},
+{q:"Which is NOT a use-case component?",o:["System","Actor","Use-case","Database"],a:3,e:"Keyword: components = system, actor, use-case."},
+
+/* ========= USE-CASE ========= */
+{q:"A use-case represents:",o:["Internal processing","High-level user goal","UI design","Database operation"],a:1,e:"Keyword: user goal → Use-case."},
+{q:"Use-cases are:",o:["UI-dependent","UI-independent","Code-dependent","Database-dependent"],a:1,e:"Keyword: UI-independent → Use-case."},
+{q:"Which is NOT a use-case?",o:["Withdraw money","Check balance","Confirm amount","Transfer funds"],a:2,e:"Keyword: internal operation → NOT use-case."},
+
+/* ========= ACTOR ========= */
+{q:"An actor represents:",o:["A user account","A role","A screen","A database"],a:1,e:"Keyword: role → Actor."},
+{q:"Actors can be:",o:["Users only","Systems only","Users or external systems","Databases"],a:2,e:"Keyword: user or external system → Actor."},
+{q:"One actor can represent:",o:["One user only","Many users","One screen","One database"],a:1,e:"Keyword: one actor ↔ many users."},
+
+/* ========= USE-CASE SPECIFICATION ========= */
+{q:"A use-case name should be:",o:["A noun","An adjective","A verb","A number"],a:2,e:"Keyword: name = verb."},
+{q:"Which is part of use-case specification?",o:["Source code","Pre-conditions","Database schema","UI layout"],a:1,e:"Keyword: pre-conditions → specification."},
+{q:"Post-conditions describe:",o:["Initial state","Final state","User role","UI behavior"],a:1,e:"Keyword: post-conditions → final state."},
+
+/* ========= SCENARIOS ========= */
+{q:"The normal sequence of actions is:",o:["Exceptional flow","Main flow","Error flow","Alternate flow"],a:1,e:"Keyword: main flow → scenario."},
+{q:"Handling errors belongs to:",o:["Main flow","Exceptional flow","Actor role","System boundary"],a:1,e:"Keyword: exceptional flow."},
+
+/* ========= RELATIONSHIPS ========= */
+{q:"<<include>> relationship means:",o:["Optional behavior","Mandatory shared behavior","Exceptional case","Conditional flow"],a:1,e:"Keyword: include → mandatory."},
+{q:"<<extend>> relationship means:",o:["Mandatory behavior","Optional behavior","Always executed","Shared behavior"],a:1,e:"Keyword: extend → optional."},
+
+/* ========= BUILDING USE-CASE DIAGRAM ========= */
+{q:"The first step in building a use-case diagram is:",o:["Identify actors","Define system boundary","Identify use-cases","Verify diagram"],a:1,e:"Keyword: define boundary → step 1."},
+{q:"The last step in building a use-case diagram is:",o:["Identify actors","Define relationships","Verify diagram","Draw UI"],a:2,e:"Keyword: verify diagram → last step."},
+
+/* ========= CLASSIFICATION ========= */
+{q:"Classifying use-cases by risk means:",o:["UI importance","Technical uncertainty","User interest","Database size"],a:1,e:"Keyword: risk → classification."},
+{q:"Classifying by architecture focuses on:",o:["User roles","System structure","UI design","Business rules"],a:1,e:"Keyword: architecture → system structure."},
+{q:"Large functionality refers to:",o:["Small tasks","Major system functions","UI buttons","Reports"],a:1,e:"Keyword: large functionality."},
+{q:"New technology classification focuses on:",o:["Users","Tools","Technological novelty","Cost"],a:2,e:"Keyword: new technology."},
+{q:"Customer interest classification focuses on:",o:["Developers","Managers","Users","System size"],a:2,e:"Keyword: customer interest."}
+
+];
+
+let index = 0;
+let locked = false;
+
+function loadQuestion(){
+  locked=false;
+  document.getElementById("nextBtn").style.display="none";
+  document.getElementById("explain").style.display="none";
+  document.getElementById("progress").innerText = `Question ${index+1} / ${questions.length}`;
+  document.getElementById("question").innerText = questions[index].q;
+
+  const optDiv=document.getElementById("options");
+  optDiv.innerHTML="";
+  questions[index].o.forEach((x,i)=>{
+    const d=document.createElement("div");
+    d.className="option";
+    d.innerText=x;
+    d.onclick=()=>checkAnswer(d,i);
+    optDiv.appendChild(d);
+  });
+}
+
+function checkAnswer(el,i){
+  if(locked) return;
+  locked=true;
+  const q=questions[index];
+  document.querySelectorAll(".option").forEach((x,idx)=>{
+    if(idx===q.a) x.classList.add("correct");
+    if(idx===i && i!==q.a) x.classList.add("wrong");
+  });
+  if(i!==q.a){
+    const ex=document.getElementById("explain");
+    ex.innerText="❌ Wrong. Explanation: "+q.e;
+    ex.style.display="block";
+  }
+  document.getElementById("nextBtn").style.display="block";
+}
+
+function nextQuestion(){
+  index++;
+  if(index>=questions.length){
+    alert("🎉 Quiz completed!");
+    index=0;
+  }
+  loadQuestion();
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
