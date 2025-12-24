@@ -2,31 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SAD Quiz</title>
+<title>SAD Quiz – Trang chủ</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container" id="menu">
-  <h1>📚 SAD Quiz</h1>
-  <button onclick="startQuiz(4)">Chương 4 – Requirements</button>
-  <button onclick="startQuiz(5)">Chương 5 – Static Structure</button>
-  <button onclick="startQuiz(6)">Chương 6 – Dynamic Behaviour</button>
+<div class="container">
+  <h1>📘 SAD Quiz</h1>
+  <p>Chọn chương để ôn tập</p>
+
+  <button onclick="goQuiz(4)">Chương 4 – Requirement Modelling</button>
+  <button onclick="goQuiz(5)">Chương 5 – Static Structure</button>
+  <button onclick="goQuiz(6)">Chương 6 – Dynamic Behaviour</button>
 </div>
 
-<div class="container" id="app" style="display:none">
-  <h1 id="quizTitle"></h1>
+<script>
+function goQuiz(chapter) {
+  // lưu chương được chọn
+  localStorage.setItem("chapter", chapter);
+  window.location.href = "quiz.html";
+}
+</script>
 
-  <div id="progress"></div>
-  <div id="stats"></div>
-
-  <div id="question"></div>
-  <div id="options"></div>
-
-  <div id="explain" style="display:none"></div>
-  <button id="nextBtn" style="display:none">Next ➡️</button>
-</div>
-
-<script src="app.js"></script>
 </body>
 </html>
