@@ -8,25 +8,45 @@ let wrongList = [];
 
 let questionBank = [];
 
+/* =======================
+   LOAD QUIZ BY CHAPTER
+======================= */
 function startQuiz(chapter) {
   loadQuestions(chapter);
 }
 
 function loadQuestions(chapter) {
   const script = document.createElement("script");
-  script.src = `question${chapter}.js`;
+
+  if (chapter === 4) script.src = "question4.js";
+  if (chapter === 5) script.src = "question5.js";
+  if (chapter === 6) script.src = "question6.js";
 
   script.onload = () => {
     document.getElementById("menu").style.display = "none";
     document.getElementById("app").style.display = "block";
     document.getElementById("quizTitle").innerText =
-      `📘 Chương ${chapter} Quiz`;
+      `📘 Chương ${chapter} – Quiz`;
 
+    resetQuiz();
     loadQuestion();
   };
 
   document.body.appendChild(script);
 }
+
+/* =======================
+   QUIZ CORE LOGIC
+======================= */
+function resetQuiz() {
+  sectionIndex = 0;
+  qIndex = 0;
+  locked = false;
+  total = 0;
+  correct = 0;
+  wrongList = [];
+}
+
 function loadQuestion() {
   locked = false;
 
@@ -34,7 +54,7 @@ function loadQuestion() {
   const q = section.questions[qIndex];
 
   document.getElementById("progress").innerText =
-    `Section ${section.section}: ${section.title} (${qIndex+1}/${section.questions.length})`;
+    `Section ${section.section}: ${section.title} (${qIndex + 1}/${section.questions.length})`;
 
   document.getElementById("question").innerText = q.q;
   document.getElementById("options").innerHTML = "";
@@ -71,8 +91,9 @@ function checkAnswer(el, i) {
     <b>Cheat Sheet:</b><br>${section.cheat}
   `;
 
-  if (i === q.a) correct++;
-  else {
+  if (i === q.a) {
+    correct++;
+  } else {
     wrongList.push({
       section: section.section,
       title: section.title,
@@ -87,8 +108,12 @@ function checkAnswer(el, i) {
   document.getElementById("nextBtn").style.display = "block";
 }
 
+/* =======================
+   NEXT QUESTION
+======================= */
 document.getElementById("nextBtn").onclick = () => {
   qIndex++;
+
   if (qIndex >= questionBank[sectionIndex].questions.length) {
     qIndex = 0;
     sectionIndex++;
@@ -98,9 +123,13 @@ document.getElementById("nextBtn").onclick = () => {
       return;
     }
   }
+
   loadQuestion();
 };
 
+/* =======================
+   REVIEW
+======================= */
 function showReview() {
   document.getElementById("app").innerHTML = `
     <h2>📊 Quiz Completed</h2>
@@ -108,15 +137,14 @@ function showReview() {
     <p>Correct: ${correct}</p>
     <p>Wrong: ${total - correct}</p>
     <hr>
-    <h3>❌ Wrong Questions</h3>
+    <h3>❌ Wrong Questions Review</h3>
     ${wrongList.map(w => `
-      <div>
-        <b>Section ${w.section}</b><br>
-        ${w.question}<br>
-        <i>${w.cheat}</i>
+      <div style="margin-bottom:15px">
+        <b>Section ${w.section}: ${w.title}</b><br>
+        Q: ${w.question}<br>
+        <i>Cheat Sheet:</i> ${w.cheat}
       </div>
     `).join("")}
     <button onclick="location.reload()">🔁 Restart</button>
   `;
 }
-
