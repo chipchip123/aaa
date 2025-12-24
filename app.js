@@ -14,7 +14,7 @@ function startQuiz(chapter) {
 
 function loadQuestions(chapter) {
   const script = document.createElement("script");
-  script.src = `questions/question${chapter}.js`;
+  script.src = `question${chapter}.js`;
 
   script.onload = () => {
     document.getElementById("menu").style.display = "none";
@@ -119,3 +119,4 @@ function showReview() {
     <button onclick="location.reload()">🔁 Restart</button>
   `;
 }
+
