@@ -6,6 +6,27 @@ let total = 0;
 let correct = 0;
 let wrongList = [];
 
+let questionBank = [];
+
+function startQuiz(chapter) {
+  loadQuestions(chapter);
+}
+
+function loadQuestions(chapter) {
+  const script = document.createElement("script");
+  script.src = `questions/question${chapter}.js`;
+
+  script.onload = () => {
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("app").style.display = "block";
+    document.getElementById("quizTitle").innerText =
+      `📘 Chương ${chapter} Quiz`;
+
+    loadQuestion();
+  };
+
+  document.body.appendChild(script);
+}
 function loadQuestion() {
   locked = false;
 
@@ -50,9 +71,8 @@ function checkAnswer(el, i) {
     <b>Cheat Sheet:</b><br>${section.cheat}
   `;
 
-  if (i === q.a) {
-    correct++;
-  } else {
+  if (i === q.a) correct++;
+  else {
     wrongList.push({
       section: section.section,
       title: section.title,
@@ -82,32 +102,20 @@ document.getElementById("nextBtn").onclick = () => {
 };
 
 function showReview() {
-  document.querySelector(".container").innerHTML = `
+  document.getElementById("app").innerHTML = `
     <h2>📊 Quiz Completed</h2>
     <p>Total: ${total}</p>
     <p>Correct: ${correct}</p>
     <p>Wrong: ${total - correct}</p>
     <hr>
-    <h3>❌ Wrong Questions Review</h3>
+    <h3>❌ Wrong Questions</h3>
     ${wrongList.map(w => `
-      <div style="margin-bottom:15px">
-        <b>Section ${w.section}: ${w.title}</b><br>
-        Q: ${w.question}<br>
-        <i>Cheat Sheet:</i> ${w.cheat}
+      <div>
+        <b>Section ${w.section}</b><br>
+        ${w.question}<br>
+        <i>${w.cheat}</i>
       </div>
     `).join("")}
-    <button onclick="restart()">🔁 Restart</button>
+    <button onclick="location.reload()">🔁 Restart</button>
   `;
 }
-
-function restart() {
-  sectionIndex = 0;
-  qIndex = 0;
-  locked = false;
-  total = 0;
-  correct = 0;
-  wrongList = [];
-  location.reload();
-}
-
-loadQuestion();
