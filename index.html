@@ -8,13 +8,26 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="app">
   <h1>📘 Requirement Modelling Quiz</h1>
+
+  <!-- Progress -->
   <div id="progress"></div>
+
+  <!-- Stats -->
+  <div id="stats" style="margin:10px 0;font-weight:bold"></div>
+
+  <!-- Question -->
   <div id="question"></div>
+
+  <!-- Options -->
   <div id="options"></div>
-  <div id="explain"></div>
-  <button id="nextBtn">Next</button>
+
+  <!-- Explain / Cheat sheet -->
+  <div id="explain" style="display:none"></div>
+
+  <!-- Next -->
+  <button id="nextBtn" style="display:none">Next ➡️</button>
 </div>
 
 <script src="questions.js"></script>
