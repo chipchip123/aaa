@@ -1,4 +1,4 @@
-const questionBank = [
+questionBank = [
 
 /* ================== 1. REQUIREMENTS ================== */
 {
@@ -310,3 +310,4 @@ const questionBank = [
 }
 
 ];
+
