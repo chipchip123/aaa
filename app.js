@@ -3,20 +3,21 @@ let qIndex = 0;
 let wrong = [];
 let locked = false;
 
-hàm loadQuestion() {
-  đã khóa = false;
+function loadQuestion() {
+  locked = false;
+
   const section = questionBank[sectionIndex];
   const q = section.questions[qIndex];
 
   document.getElementById("progress").innerText =
-    `Mục ${section.section}: ${section.title} (${qIndex+1}/${section.questions.length})`;
+    `Section ${section.section}: ${section.title} (${qIndex + 1}/${section.questions.length})`;
 
-  document.getElementById("câu hỏi").innerText = qq;
+  document.getElementById("question").innerText = q.q;
   document.getElementById("options").innerHTML = "";
   document.getElementById("explain").style.display = "none";
   document.getElementById("nextBtn").style.display = "none";
 
-  qoforEach((text, i) => {
+  q.o.forEach((text, i) => {
     const div = document.createElement("div");
     div.className = "option";
     div.innerText = text;
@@ -25,20 +26,21 @@ hàm loadQuestion() {
   });
 }
 
-hàm checkAnswer(el, i) {
-  nếu (bị khóa) trả về;
-  đã khóa = đúng;
+function checkAnswer(el, i) {
+  if (locked) return;
+  locked = true;
 
   const q = questionBank[sectionIndex].questions[qIndex];
+
   document.querySelectorAll(".option").forEach((opt, idx) => {
-    if (idx === qa) opt.classList.add("correct");
-    if (idx === i && i !== qa) opt.classList.add("wrong");
+    if (idx === q.a) opt.classList.add("correct");
+    if (idx === i && i !== q.a) opt.classList.add("wrong");
   });
 
-  nếu (i !== qa) {
-    sai.đẩy(q);
+  if (i !== q.a) {
+    wrong.push(q);
     const e = document.getElementById("explain");
-    e.innerText = "❌ " + qe;
+    e.innerText = "❌ " + q.e;
     e.style.display = "block";
   }
 
@@ -47,14 +49,17 @@ hàm checkAnswer(el, i) {
 
 document.getElementById("nextBtn").onclick = () => {
   qIndex++;
-  nếu (qIndex >= questionBank[sectionIndex].questions.length) {
+
+  if (qIndex >= questionBank[sectionIndex].questions.length) {
     qIndex = 0;
     sectionIndex++;
-    nếu (sectionIndex >= questionBank.length) {
-      alert("Xong! Câu trả lời sai: " + wrong.length);
-      trở lại;
+
+    if (sectionIndex >= questionBank.length) {
+      alert(`Done! Wrong answers: ${wrong.length}`);
+      return;
     }
   }
+
   loadQuestion();
 };
 
