@@ -8,25 +8,15 @@ let wrongList = [];
 
 let questionBank = [];
 
-/* =======================
-   LOAD QUIZ BY CHAPTER
-======================= */
+/* ===== START QUIZ ===== */
 function startQuiz(chapter) {
-  loadQuestions(chapter);
-}
-
-function loadQuestions(chapter) {
   const script = document.createElement("script");
-
-  if (chapter === 4) script.src = "question4.js";
-  if (chapter === 5) script.src = "question5.js";
-  if (chapter === 6) script.src = "question6.js";
+  script.src = `question${chapter}.js`;
 
   script.onload = () => {
     document.getElementById("menu").style.display = "none";
     document.getElementById("app").style.display = "block";
-    document.getElementById("quizTitle").innerText =
-      `📘 Chương ${chapter} – Quiz`;
+    document.getElementById("quizTitle").innerText = `📘 Chương ${chapter}`;
 
     resetQuiz();
     loadQuestion();
@@ -35,9 +25,7 @@ function loadQuestions(chapter) {
   document.body.appendChild(script);
 }
 
-/* =======================
-   QUIZ CORE LOGIC
-======================= */
+/* ===== CORE ===== */
 function resetQuiz() {
   sectionIndex = 0;
   qIndex = 0;
@@ -49,7 +37,6 @@ function resetQuiz() {
 
 function loadQuestion() {
   locked = false;
-
   const section = questionBank[sectionIndex];
   const q = section.questions[qIndex];
 
@@ -65,15 +52,14 @@ function loadQuestion() {
     const div = document.createElement("div");
     div.className = "option";
     div.innerText = text;
-    div.onclick = () => checkAnswer(div, i);
+    div.onclick = () => checkAnswer(i);
     document.getElementById("options").appendChild(div);
   });
 }
 
-function checkAnswer(el, i) {
+function checkAnswer(i) {
   if (locked) return;
   locked = true;
-
   total++;
 
   const section = questionBank[sectionIndex];
@@ -84,67 +70,34 @@ function checkAnswer(el, i) {
     if (idx === i && i !== q.a) opt.classList.add("wrong");
   });
 
-  const explain = document.getElementById("explain");
-  explain.style.display = "block";
-  explain.innerHTML = `
-    ${i === q.a ? "✅ Correct" : "❌ Wrong"}<br><br>
-    <b>Cheat Sheet:</b><br>${section.cheat}
-  `;
+  document.getElementById("explain").style.display = "block";
+  document.getElementById("explain").innerHTML =
+    `${i === q.a ? "✅ Correct" : "❌ Wrong"}<br><b>Cheat:</b> ${section.cheat}`;
 
-  if (i === q.a) {
-    correct++;
-  } else {
-    wrongList.push({
-      section: section.section,
-      title: section.title,
-      question: q.q,
-      cheat: section.cheat
-    });
-  }
+  if (i === q.a) correct++;
+  else wrongList.push({ q: q.q, cheat: section.cheat });
 
   document.getElementById("stats").innerText =
-    `✔ Correct: ${correct} | ❌ Wrong: ${total - correct} | Total: ${total}`;
+    `✔ ${correct} | ❌ ${total - correct} | Total ${total}`;
 
   document.getElementById("nextBtn").style.display = "block";
 }
 
-/* =======================
-   NEXT QUESTION
-======================= */
 document.getElementById("nextBtn").onclick = () => {
   qIndex++;
-
   if (qIndex >= questionBank[sectionIndex].questions.length) {
     qIndex = 0;
     sectionIndex++;
-
-    if (sectionIndex >= questionBank.length) {
-      showReview();
-      return;
-    }
+    if (sectionIndex >= questionBank.length) return showReview();
   }
-
   loadQuestion();
 };
 
-/* =======================
-   REVIEW
-======================= */
 function showReview() {
   document.getElementById("app").innerHTML = `
-    <h2>📊 Quiz Completed</h2>
-    <p>Total: ${total}</p>
-    <p>Correct: ${correct}</p>
-    <p>Wrong: ${total - correct}</p>
-    <hr>
-    <h3>❌ Wrong Questions Review</h3>
-    ${wrongList.map(w => `
-      <div style="margin-bottom:15px">
-        <b>Section ${w.section}: ${w.title}</b><br>
-        Q: ${w.question}<br>
-        <i>Cheat Sheet:</i> ${w.cheat}
-      </div>
-    `).join("")}
-    <button onclick="location.reload()">🔁 Restart</button>
+    <h2>Done</h2>
+    <p>Correct: ${correct}/${total}</p>
+    ${wrongList.map(w => `<div>${w.q}<br><i>${w.cheat}</i></div>`).join("")}
+    <button onclick="location.reload()">Restart</button>
   `;
 }
