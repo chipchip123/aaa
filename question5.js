@@ -1,282 +1,142 @@
 questionBank = [
 
-/* ================== 1. STATIC STRUCTURAL MODELLING ================== */
+/* ================== 5.1 STATIC STRUCTURAL MODELLING ================== */
 {
-  section: 1,
+  section: "5.1",
   title: "Static Structural Modelling",
-  cheat: "Static = class, attribute, relationship (NOT behavior, NOT runtime).",
+  cheat: "Static structure = WHAT exists in system (classes, attributes, relationships). NOT behavior.",
   questions: [
-    { q:"Static structural modelling focuses on:", o:["System behavior","Static view of the system","Runtime interaction","Dynamic flow"], a:1 },
-    { q:"Which diagram represents static structure?", o:["Sequence","Class","Activity","State"], a:1 },
-    { q:"Static view describes:", o:["Execution order","Relationships and structure","Message flow","Timing"], a:1 },
-    { q:"Static modelling ignores:", o:["Classes","Attributes","Runtime behavior","Relationships"], a:2 },
-    { q:"Static modelling is mainly done using:", o:["Use-case","Class","Sequence","Activity"], a:1 }
+    { q:"Static structural modelling focuses on:", o:["System behavior","System structure","Execution flow","Runtime interaction"], a:1 },
+    { q:"Static structure describes:", o:["Message order","Relationships among classes","State changes","Control flow"], a:1 },
+    { q:"Which diagram mainly represents static structure?", o:["Sequence","Activity","Class","State"], a:2 },
+    { q:"Static structural modelling answers:", o:["HOW system behaves","WHEN events occur","WHAT elements exist","WHO executes actions"], a:2 },
+    { q:"Static models are mostly used during:", o:["Coding","Design","Testing","Deployment"], a:1 }
   ]
 },
 
-/* ================== 2. CLASS DIAGRAM ================== */
+/* ================== 5.2 CLASS ================== */
 {
-  section: 2,
-  title: "Class Diagram",
-  cheat: "Class diagram = classes + attributes + operations + relationships.",
-  questions: [
-    { q:"Class diagram consists of:", o:["Objects","Classes and relationships","Messages","Scenarios"], a:1 },
-    { q:"Class diagram mainly shows:", o:["Dynamic flow","Static structure","UI","Behavior"], a:1 },
-    { q:"Class diagrams are essential in:", o:["Testing","Object-oriented design","Deployment","Maintenance"], a:1 },
-    { q:"Class diagram helps build:", o:["UI","System skeleton","Database","Test cases"], a:1 },
-    { q:"Which is NOT shown in class diagram?", o:["Attributes","Operations","Relationships","Message order"], a:3 }
-  ]
-},
-
-/* ================== 3. ANALYSIS vs DESIGN ================== */
-{
-  section: 3,
-  title: "Analysis vs Design Class Diagram",
-  cheat: "Analysis = WHAT (user view). Design = HOW (developer view).",
-  questions: [
-    { q:"Analysis class diagram is created in:", o:["Design phase","Analysis phase","Implementation","Testing"], a:1 },
-    { q:"Design class diagram is created in:", o:["Analysis phase","Design phase","Requirement phase","Testing"], a:1 },
-    { q:"Analysis class diagram represents:", o:["Implementation","User view","Code structure","Language"], a:1 },
-    { q:"Design class diagram focuses on:", o:["Concepts","Implementation details","Business rules","User needs"], a:1 },
-    { q:"Which contains implementation details?", o:["Analysis diagram","Design diagram","Use-case","Domain model"], a:1 }
-  ]
-},
-
-/* ================== 4. ANALYSIS CLASS DIAGRAM ================== */
-{
-  section: 4,
-  title: "Analysis Class Diagram",
-  cheat: "Domain model, concepts only, NO code, NO implementation.",
-  questions: [
-    { q:"Analysis class diagram is also called:", o:["Design model","Domain model","Object model","System model"], a:1 },
-    { q:"Analysis class diagram captures:", o:["Algorithms","Concepts","Code","Frameworks"], a:1 },
-    { q:"Analysis diagram focuses on:", o:["HOW","WHAT concepts exist","Programming language","Visibility"], a:1 },
-    { q:"Which is excluded from analysis diagram?", o:["Concepts","Classes","Implementation details","Relationships"], a:2 },
-    { q:"Analysis class diagram is mainly for:", o:["Developers","Users & stakeholders","Testers","Maintainers"], a:1 }
-  ]
-},
-
-/* ================== 5. DESIGN CLASS DIAGRAM ================== */
-{
-  section: 5,
-  title: "Design Class Diagram",
-  cheat: "Detailed diagram: attributes + methods + visibility (close to code).",
-  questions: [
-    { q:"Design class diagram is:", o:["Conceptual","Detailed","Abstract","User-oriented"], a:1 },
-    { q:"Design class diagram includes:", o:["Concepts only","Attributes and methods","Use-cases","Scenarios"], a:1 },
-    { q:"Design diagram is closer to:", o:["User view","Developer view","Business view","Customer view"], a:1 },
-    { q:"Design diagram conforms to:", o:["Business rules","Programming language","User needs","Concepts"], a:1 },
-    { q:"One analysis class may map to:", o:["One design class","Several design classes","No class","One interface"], a:1 }
-  ]
-},
-
-/* ================== 6. CLASS ================== */
-{
-  section: 6,
+  section: "5.2",
   title: "Class",
-  cheat: "Class = attributes (data) + operations (behavior).",
+  cheat: "Class = blueprint describing attributes + operations.",
   questions: [
-    { q:"A UML class represents:", o:["An object","A class or interface","A method","A variable"], a:1 },
-    { q:"A class consists of:", o:["Methods only","Attributes and operations","Objects only","Messages"], a:1 },
-    { q:"Operations represent:", o:["Data","Behavior","Structure","Visibility"], a:1 },
-    { q:"Attributes represent:", o:["Behavior","Data","Messages","Operations"], a:1 },
-    { q:"Design class diagram often uses:", o:["HTML","Java/C++","SQL","Python"], a:1 }
+    { q:"A class represents:", o:["An object","A blueprint","A method","A message"], a:1 },
+    { q:"Classes describe:", o:["Only data","Only behavior","Data and behavior","Messages"], a:2 },
+    { q:"Which belongs to a class?", o:["Scenario","Attribute","Use-case","Actor"], a:1 },
+    { q:"Class diagram shows:", o:["Instances","Blueprints","Runtime flow","Algorithms"], a:1 },
+    { q:"Class is defined at:", o:["Runtime","Design time","Execution","Deployment"], a:1 }
   ]
 },
 
-/* ================== 7. ATTRIBUTES ================== */
+/* ================== 5.3 ATTRIBUTE ================== */
 {
-  section: 7,
-  title: "Attributes",
-  cheat: "Attribute = data only. If it cannot do action → attribute.",
+  section: "5.3",
+  title: "Attribute",
+  cheat: "Attribute = property/data of a class.",
   questions: [
-    { q:"Attributes represent:", o:["Behavior","Data","Operations","Responsibilities"], a:1 },
-    { q:"Which is a simple attribute type?", o:["Object","Date","Integer","Class"], a:2 },
-    { q:"Default value is written as:", o:["name:type","name=value","type:name","value:name"], a:1 },
-    { q:"An attribute should belong to:", o:["Any class","Class owning the data","All classes","Interface"], a:1 },
-    { q:"Salary is best modeled as:", o:["Class","Attribute","Method","Operation"], a:1 }
+    { q:"An attribute represents:", o:["Behavior","Property","Message","Operation"], a:1 },
+    { q:"Attributes store:", o:["Logic","Data","Control","Flow"], a:1 },
+    { q:"Which is an attribute?", o:["withdraw()","balance","login()","transfer()"], a:1 },
+    { q:"Attributes are usually shown as:", o:["Methods","Variables","Actors","Messages"], a:1 },
+    { q:"Attribute values belong to:", o:["Class","Object","Diagram","Actor"], a:1 }
   ]
 },
 
-/* ================== 8. OPERATIONS ================== */
+/* ================== 5.4 OPERATION (METHOD) ================== */
 {
-  section: 8,
-  title: "Operations / Methods",
-  cheat: "Operation = behavior / action (verbs, getters, setters).",
+  section: "5.4",
+  title: "Operation (Method)",
+  cheat: "Operation = behavior/function of a class (WHAT it can do).",
   questions: [
-    { q:"Operations represent:", o:["Data","Behavior","Attributes","Relationships"], a:1 },
-    { q:"Getters and setters are:", o:["Attributes","Operations","Classes","Objects"], a:1 },
-    { q:"Operations may include:", o:["Name only","Return type and parameters","Attributes only","Visibility only"], a:1 },
-    { q:"Class responsibility is carried out by:", o:["Attributes","Operations","Objects","Relationships"], a:1 },
-    { q:"move(p:Point) is an example of:", o:["Attribute","Operation","Class","Association"], a:1 }
+    { q:"An operation represents:", o:["Data","Behavior","Relationship","Attribute"], a:1 },
+    { q:"Operations describe:", o:["WHAT system does","HOW system implemented","UI design","Database"], a:0 },
+    { q:"Which is an operation?", o:["balance","accountId","withdraw()","customerName"], a:2 },
+    { q:"Operations correspond closely to:", o:["Functional requirements","Non-functional requirements","UI layout","Deployment"], a:0 },
+    { q:"Operations are triggered by:", o:["Classes","Actors","Attributes","Messages"], a:1 }
   ]
 },
 
-/* ================== 9. VISIBILITY ================== */
+/* ================== 5.5 ASSOCIATION ================== */
 {
-  section: 9,
-  title: "Visibility",
-  cheat: "+ public | # protected | - private.",
-  questions: [
-    { q:"Public visibility symbol is:", o:["-","#","+", "*"], a:2 },
-    { q:"Private visibility symbol is:", o:["#","+","-","~"], a:2 },
-    { q:"Protected visibility symbol is:", o:["#","-","+","*"], a:0 },
-    { q:"Private members are visible to:", o:["All classes","Subclasses","Same class only","Packages"], a:2 },
-    { q:"Visibility applies to:", o:["Classes only","Attributes & operations","Objects only","Relationships"], a:1 }
-  ]
-},
-
-/* ================== 10. RELATIONSHIP TYPES ================== */
-{
-  section: 10,
-  title: "Relationship Types",
-  cheat: "is-a = inheritance | part-of = aggregation/composition | use = dependency.",
-  questions: [
-    { q:"Which is NOT a relationship type?", o:["Association","Inheritance","Dependency","Iteration"], a:3 },
-    { q:"Inheritance represents:", o:["Has-a","Is-a","Uses","Part-of"], a:1 },
-    { q:"Dependency indicates:", o:["Strong ownership","Temporary usage","Whole-part","Generalization"], a:1 },
-    { q:"Strongest relationship is:", o:["Association","Aggregation","Composition","Dependency"], a:2 },
-    { q:"Whole-part relationship can be:", o:["Association","Aggregation","Composition","All of these"], a:3 }
-  ]
-},
-
-/* ================== 11. ASSOCIATION ================== */
-{
-  section: 11,
+  section: "5.5",
   title: "Association",
-  cheat: "Association = semantic link, usually bidirectional.",
+  cheat: "Association = structural relationship between classes.",
   questions: [
-    { q:"Association represents:", o:["Behavior","Semantic connection","Inheritance","Ownership"], a:1 },
-    { q:"Association links are between:", o:["Objects","Classes","Methods","Packages"], a:1 },
-    { q:"Each end of association is called:", o:["Class","Role","Attribute","Operation"], a:1 },
-    { q:"Association is usually:", o:["Unidirectional","Bidirectional","Private","Protected"], a:1 },
-    { q:"Association abstracts:", o:["Code","Links between instances","UI","Database"], a:1 }
+    { q:"Association represents:", o:["Inheritance","Structural relationship","Behavior","Dependency"], a:1 },
+    { q:"Association connects:", o:["Objects","Classes","Methods","States"], a:1 },
+    { q:"Association is shown using:", o:["Arrow","Line","Diamond","Circle"], a:1 },
+    { q:"Association indicates:", o:["Execution order","Link between classes","Message flow","State change"], a:1 },
+    { q:"Association exists at:", o:["Runtime only","Design level","Execution level","Deployment"], a:1 }
   ]
 },
 
-/* ================== 12. MULTIPLICITY ================== */
+/* ================== 5.6 MULTIPLICITY ================== */
 {
-  section: 12,
+  section: "5.6",
   title: "Multiplicity",
-  cheat: "Multiplicity = how many objects (1, 0..1, *, 1..*).",
+  cheat: "Multiplicity = how many objects participate in a relationship.",
   questions: [
-    { q:"Multiplicity defines:", o:["Direction","Quantity","Behavior","Visibility"], a:1 },
-    { q:"1..* means:", o:["Zero or one","Exactly one","One to many","Zero to many"], a:2 },
-    { q:"0..1 means:", o:["Exactly one","Zero or one","Many","One to many"], a:1 },
-    { q:"* means:", o:["One","Many","Zero or many","One or many"], a:2 },
-    { q:"Multiplicity is written at:", o:["Class center","Association ends","Operation","Attribute"], a:1 }
+    { q:"Multiplicity specifies:", o:["Order","Quantity","Speed","Direction"], a:1 },
+    { q:"Which is a multiplicity?", o:["login()","1..*","Customer","has"], a:1 },
+    { q:"1..* means:", o:["Exactly one","At least one","At most one","Zero only"], a:1 },
+    { q:"Multiplicity is placed:", o:["Inside class","On association ends","On attributes","On operations"], a:1 },
+    { q:"Multiplicity applies to:", o:["Attributes","Associations","States","Messages"], a:1 }
   ]
 },
 
-/* ================== 13. AGGREGATION ================== */
+/* ================== 5.7 GENERALIZATION (INHERITANCE) ================== */
 {
-  section: 13,
+  section: "5.7",
+  title: "Generalization / Inheritance",
+  cheat: "Generalization = is-a relationship.",
+  questions: [
+    { q:"Generalization represents:", o:["has-a","is-a","uses","depends"], a:1 },
+    { q:"Inheritance allows:", o:["Code duplication","Reuse","Isolation","Encapsulation loss"], a:1 },
+    { q:"Which symbol represents inheritance?", o:["Diamond","Arrow with triangle","Line","Circle"], a:1 },
+    { q:"Superclass provides:", o:["Data only","Behavior only","Common features","UI"], a:2 },
+    { q:"Subclass:", o:["Cannot add features","Inherits from superclass","Deletes attributes","Breaks design"], a:1 }
+  ]
+},
+
+/* ================== 5.8 AGGREGATION ================== */
+{
+  section: "5.8",
   title: "Aggregation",
-  cheat: "Weak whole–part. Part EXISTS independently. Example: Team–Player.",
+  cheat: "Aggregation = weak has-a (shared lifetime). White diamond.",
   questions: [
-    { q:"Aggregation represents:", o:["Strong ownership","Weak whole-part","Is-a","Temporary use"], a:1 },
-    { q:"Parts in aggregation:", o:["Depend on whole","Exist independently","Are destroyed","Are inherited"], a:1 },
-    { q:"Aggregation notation is:", o:["Black diamond","White diamond","Arrow","Dashed line"], a:1 },
-    { q:"Aggregation is weaker than:", o:["Association","Composition","Dependency","Inheritance"], a:1 },
-    { q:"Example of aggregation:", o:["Car–Engine","Team–Player","House–Room","Order–OrderLine"], a:1 }
+    { q:"Aggregation is a type of:", o:["Inheritance","Association","Dependency","Generalization"], a:1 },
+    { q:"Aggregation indicates:", o:["Strong ownership","Weak ownership","Behavior","Control"], a:1 },
+    { q:"Aggregation uses:", o:["Black diamond","White diamond","Arrow","Circle"], a:1 },
+    { q:"In aggregation, parts:", o:["Cannot exist alone","May exist independently","Are destroyed together","Are inherited"], a:1 },
+    { q:"Aggregation is weaker than:", o:["Association","Composition","Dependency","Generalization"], a:1 }
   ]
 },
 
-/* ================== 14. COMPOSITION ================== */
+/* ================== 5.9 COMPOSITION ================== */
 {
-  section: 14,
+  section: "5.9",
   title: "Composition",
-  cheat: "Strong whole–part. Whole destroyed → part destroyed.",
+  cheat: "Composition = strong has-a (same lifetime). Black diamond.",
   questions: [
-    { q:"Composition represents:", o:["Weak ownership","Strong whole-part","Is-a","Uses"], a:1 },
-    { q:"Parts in composition:", o:["Exist independently","Depend on whole","Are shared","Are inherited"], a:1 },
-    { q:"Composition notation is:", o:["White diamond","Black diamond","Arrow","Dashed line"], a:1 },
-    { q:"If whole is destroyed, parts are:", o:["Moved","Destroyed","Shared","Copied"], a:1 },
-    { q:"Example of composition:", o:["Team–Player","Car–Engine","Library–Book","Company–Employee"], a:1 }
+    { q:"Composition indicates:", o:["Weak ownership","Strong ownership","Inheritance","Dependency"], a:1 },
+    { q:"Composition uses:", o:["White diamond","Black diamond","Arrow","Line"], a:1 },
+    { q:"In composition, parts:", o:["Can exist alone","Share lifetime","Are inherited","Are optional"], a:1 },
+    { q:"Composition is stronger than:", o:["Association","Aggregation","Dependency","Generalization"], a:1 },
+    { q:"If whole is destroyed, parts:", o:["Remain","Also destroyed","Move","Detach"], a:1 }
   ]
 },
 
-/* ================== 15. INHERITANCE ================== */
+/* ================== 5.10 ANALYSIS vs DESIGN CLASS ================== */
 {
-  section: 15,
-  title: "Inheritance / Generalization",
-  cheat: "Inheritance = is-a relationship.",
+  section: "5.10",
+  title: "Analysis vs Design Class",
+  cheat: "Analysis = WHAT. Design = HOW.",
   questions: [
-    { q:"Inheritance represents:", o:["Has-a","Is-a","Uses","Part-of"], a:1 },
-    { q:"Superclass contains:", o:["Only data","Common attributes and operations","Private methods","UI"], a:1 },
-    { q:"Subclass:", o:["Duplicates code","Inherits superclass","Cannot add methods","Is independent"], a:1 },
-    { q:"Inheritance arrow points to:", o:["Subclass","Superclass","Object","Method"], a:1 },
-    { q:"Example of inheritance:", o:["Order–Customer","Student–Person","Car–Engine","Team–Player"], a:1 }
-  ]
-},
-
-/* ================== 16. DEPENDENCY ================== */
-{
-  section: 16,
-  title: "Dependency",
-  cheat: "Dependency = temporary use (parameter, local variable).",
-  questions: [
-    { q:"Dependency indicates:", o:["Strong ownership","Temporary use","Whole-part","Inheritance"], a:1 },
-    { q:"Dependency is drawn using:", o:["Solid line","Dashed arrow","Diamond","Triangle"], a:1 },
-    { q:"Dependency often occurs in:", o:["Attributes","Method parameters","Whole-part","Inheritance"], a:1 },
-    { q:"Dependency is the:", o:["Strongest","Weakest","Permanent","Static"], a:1 },
-    { q:"Dependency implies:", o:["Ownership","Temporary reliance","Containment","Lifetime control"], a:1 }
-  ]
-},
-
-/* ================== 17. ABSTRACT CLASS ================== */
-{
-  section: 17,
-  title: "Abstract Class",
-  cheat: "Abstract class = cannot instantiate, used for inheritance.",
-  questions: [
-    { q:"An abstract class:", o:["Can be instantiated","Cannot be instantiated","Has no methods","Has no attributes"], a:1 },
-    { q:"Abstract operations are:", o:["Implemented","Not implemented","Private","Static"], a:1 },
-    { q:"Abstract class is used to:", o:["Create objects","Provide base behavior","Store data only","Replace interface"], a:1 },
-    { q:"Abstract class name is written in:", o:["Normal","Italic","Bold","Underline"], a:1 },
-    { q:"Abstract class supports:", o:["Inheritance","Composition","Dependency","Aggregation"], a:0 }
-  ]
-},
-
-/* ================== 18. INTERFACE ================== */
-{
-  section: 18,
-  title: "Interface",
-  cheat: "Interface = operations only, no implementation, supports multiple inheritance.",
-  questions: [
-    { q:"An interface contains:", o:["Attributes","Operations only","Implementation","Objects"], a:1 },
-    { q:"Interfaces define a:", o:["Class","Contract","Variable","Object"], a:1 },
-    { q:"A class uses interface via:", o:["Extends","Implements","Depends","Aggregates"], a:1 },
-    { q:"Interfaces support:", o:["Multiple inheritance","Single inheritance","Composition","Aggregation"], a:0 },
-    { q:"Interface operations are:", o:["Implemented","Abstract","Private","Static"], a:1 }
-  ]
-},
-
-/* ================== 19. OBJECT DIAGRAM ================== */
-{
-  section: 19,
-  title: "Object Diagram",
-  cheat: "Object diagram = runtime snapshot of objects.",
-  questions: [
-    { q:"Object diagram shows:", o:["Classes","Objects","Use-cases","Methods"], a:1 },
-    { q:"Object diagram represents:", o:["Static structure","Runtime snapshot","Behavior","Flow"], a:1 },
-    { q:"Object diagram is an instance of:", o:["Sequence","Class","Use-case","Activity"], a:1 },
-    { q:"Object diagram includes:", o:["Classes","Objects and links","Methods","Messages"], a:1 },
-    { q:"Object diagram is useful for:", o:["Design only","Understanding examples","Testing only","Deployment"], a:1 }
-  ]
-},
-
-/* ================== 20. BUILDING CLASS DIAGRAM ================== */
-{
-  section: 20,
-  title: "Building Class Diagram",
-  cheat: "Steps: classes → attributes → operations → relationships → refine.",
-  questions: [
-    { q:"First step in building class diagram is:", o:["Add methods","Identify classes","Define relationships","Add visibility"], a:1 },
-    { q:"Attributes are added after:", o:["Relationships","Classes","Operations","Objects"], a:1 },
-    { q:"Operations define:", o:["Data","Behavior","Visibility","Multiplicity"], a:1 },
-    { q:"Relationships are defined after:", o:["Classes","Attributes","Operations","Objects"], a:0 },
-    { q:"Class diagram refinement is:", o:["One-time","Iterative","Ignored","Late"], a:1 }
+    { q:"Analysis classes focus on:", o:["Implementation","User requirements","Code","Technology"], a:1 },
+    { q:"Design classes focus on:", o:["WHAT","HOW","WHY","WHO"], a:1 },
+    { q:"Which belongs to design class?", o:["Business concept","Algorithm detail","User goal","Requirement"], a:1 },
+    { q:"Analysis models are closer to:", o:["Coding","Problem domain","Database","UI"], a:1 },
+    { q:"Design models are closer to:", o:["Requirements","Implementation","Stakeholders","Users"], a:1 }
   ]
 }
 
