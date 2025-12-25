@@ -16,6 +16,19 @@ function shuffleArray(arr) {
   }
 }
 
+/* ================= SHUFFLE OPTIONS (FIX B BUG) ================= */
+function shuffleOptions(question) {
+  const options = question.o.map((text, index) => ({
+    text,
+    isCorrect: index === question.a
+  }));
+
+  shuffleArray(options);
+
+  question.o = options.map(opt => opt.text);
+  question.a = options.findIndex(opt => opt.isCorrect);
+}
+
 /* ================= INIT ================= */
 window.onload = () => {
   const chapter = localStorage.getItem("chapter");
@@ -37,9 +50,10 @@ function loadQuestions(chapter) {
     // 🔀 RANDOM SECTION
     shuffleArray(questionBank);
 
-    // 🔀 RANDOM QUESTIONS IN EACH SECTION
+    // 🔀 RANDOM QUESTIONS + OPTIONS
     questionBank.forEach(sec => {
       shuffleArray(sec.questions);
+      sec.questions.forEach(q => shuffleOptions(q));
     });
 
     sectionIndex = 0;
