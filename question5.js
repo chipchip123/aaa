@@ -4,7 +4,7 @@ questionBank = [
 {
   section: 1,
   title: "Static Structural Modelling",
-  cheat: "Class diagrams represent the static view of the system.",
+  cheat: "Static = class, attribute, relationship (NOT behavior, NOT runtime).",
   questions: [
     { q:"Static structural modelling focuses on:", o:["System behavior","Static view of the system","Runtime interaction","Dynamic flow"], a:1 },
     { q:"Which diagram represents static structure?", o:["Sequence","Class","Activity","State"], a:1 },
@@ -18,7 +18,7 @@ questionBank = [
 {
   section: 2,
   title: "Class Diagram",
-  cheat: "Class diagram shows classes and relationships.",
+  cheat: "Class diagram = classes + attributes + operations + relationships.",
   questions: [
     { q:"Class diagram consists of:", o:["Objects","Classes and relationships","Messages","Scenarios"], a:1 },
     { q:"Class diagram mainly shows:", o:["Dynamic flow","Static structure","UI","Behavior"], a:1 },
@@ -28,11 +28,11 @@ questionBank = [
   ]
 },
 
-/* ================== 3. ANALYSIS vs DESIGN CLASS DIAGRAM ================== */
+/* ================== 3. ANALYSIS vs DESIGN ================== */
 {
   section: 3,
   title: "Analysis vs Design Class Diagram",
-  cheat: "Analysis = user view. Design = developer view.",
+  cheat: "Analysis = WHAT (user view). Design = HOW (developer view).",
   questions: [
     { q:"Analysis class diagram is created in:", o:["Design phase","Analysis phase","Implementation","Testing"], a:1 },
     { q:"Design class diagram is created in:", o:["Analysis phase","Design phase","Requirement phase","Testing"], a:1 },
@@ -46,7 +46,7 @@ questionBank = [
 {
   section: 4,
   title: "Analysis Class Diagram",
-  cheat: "Conceptual (domain) model. No implementation details.",
+  cheat: "Domain model, concepts only, NO code, NO implementation.",
   questions: [
     { q:"Analysis class diagram is also called:", o:["Design model","Domain model","Object model","System model"], a:1 },
     { q:"Analysis class diagram captures:", o:["Algorithms","Concepts","Code","Frameworks"], a:1 },
@@ -60,7 +60,7 @@ questionBank = [
 {
   section: 5,
   title: "Design Class Diagram",
-  cheat: "Detailed diagram with attributes, methods, visibility.",
+  cheat: "Detailed diagram: attributes + methods + visibility (close to code).",
   questions: [
     { q:"Design class diagram is:", o:["Conceptual","Detailed","Abstract","User-oriented"], a:1 },
     { q:"Design class diagram includes:", o:["Concepts only","Attributes and methods","Use-cases","Scenarios"], a:1 },
@@ -74,7 +74,7 @@ questionBank = [
 {
   section: 6,
   title: "Class",
-  cheat: "Class = attributes + operations.",
+  cheat: "Class = attributes (data) + operations (behavior).",
   questions: [
     { q:"A UML class represents:", o:["An object","A class or interface","A method","A variable"], a:1 },
     { q:"A class consists of:", o:["Methods only","Attributes and operations","Objects only","Messages"], a:1 },
@@ -88,7 +88,7 @@ questionBank = [
 {
   section: 7,
   title: "Attributes",
-  cheat: "Attributes represent data of class instances.",
+  cheat: "Attribute = data only. If it cannot do action → attribute.",
   questions: [
     { q:"Attributes represent:", o:["Behavior","Data","Operations","Responsibilities"], a:1 },
     { q:"Which is a simple attribute type?", o:["Object","Date","Integer","Class"], a:2 },
@@ -102,7 +102,7 @@ questionBank = [
 {
   section: 8,
   title: "Operations / Methods",
-  cheat: "Operations represent behavior.",
+  cheat: "Operation = behavior / action (verbs, getters, setters).",
   questions: [
     { q:"Operations represent:", o:["Data","Behavior","Attributes","Relationships"], a:1 },
     { q:"Getters and setters are:", o:["Attributes","Operations","Classes","Objects"], a:1 },
@@ -116,7 +116,7 @@ questionBank = [
 {
   section: 9,
   title: "Visibility",
-  cheat: "+ public, # protected, - private.",
+  cheat: "+ public | # protected | - private.",
   questions: [
     { q:"Public visibility symbol is:", o:["-","#","+", "*"], a:2 },
     { q:"Private visibility symbol is:", o:["#","+","-","~"], a:2 },
@@ -130,7 +130,7 @@ questionBank = [
 {
   section: 10,
   title: "Relationship Types",
-  cheat: "Association, Inheritance, Aggregation, Composition, Dependency.",
+  cheat: "is-a = inheritance | part-of = aggregation/composition | use = dependency.",
   questions: [
     { q:"Which is NOT a relationship type?", o:["Association","Inheritance","Dependency","Iteration"], a:3 },
     { q:"Inheritance represents:", o:["Has-a","Is-a","Uses","Part-of"], a:1 },
@@ -144,7 +144,7 @@ questionBank = [
 {
   section: 11,
   title: "Association",
-  cheat: "Semantic connection between classes.",
+  cheat: "Association = semantic link, usually bidirectional.",
   questions: [
     { q:"Association represents:", o:["Behavior","Semantic connection","Inheritance","Ownership"], a:1 },
     { q:"Association links are between:", o:["Objects","Classes","Methods","Packages"], a:1 },
@@ -158,7 +158,7 @@ questionBank = [
 {
   section: 12,
   title: "Multiplicity",
-  cheat: "Defines number of instances involved.",
+  cheat: "Multiplicity = how many objects (1, 0..1, *, 1..*).",
   questions: [
     { q:"Multiplicity defines:", o:["Direction","Quantity","Behavior","Visibility"], a:1 },
     { q:"1..* means:", o:["Zero or one","Exactly one","One to many","Zero to many"], a:2 },
@@ -172,7 +172,7 @@ questionBank = [
 {
   section: 13,
   title: "Aggregation",
-  cheat: "Weak whole–part relationship.",
+  cheat: "Weak whole–part. Part EXISTS independently. Example: Team–Player.",
   questions: [
     { q:"Aggregation represents:", o:["Strong ownership","Weak whole-part","Is-a","Temporary use"], a:1 },
     { q:"Parts in aggregation:", o:["Depend on whole","Exist independently","Are destroyed","Are inherited"], a:1 },
@@ -186,7 +186,7 @@ questionBank = [
 {
   section: 14,
   title: "Composition",
-  cheat: "Strong whole–part relationship.",
+  cheat: "Strong whole–part. Whole destroyed → part destroyed.",
   questions: [
     { q:"Composition represents:", o:["Weak ownership","Strong whole-part","Is-a","Uses"], a:1 },
     { q:"Parts in composition:", o:["Exist independently","Depend on whole","Are shared","Are inherited"], a:1 },
@@ -200,7 +200,7 @@ questionBank = [
 {
   section: 15,
   title: "Inheritance / Generalization",
-  cheat: "Is-a relationship.",
+  cheat: "Inheritance = is-a relationship.",
   questions: [
     { q:"Inheritance represents:", o:["Has-a","Is-a","Uses","Part-of"], a:1 },
     { q:"Superclass contains:", o:["Only data","Common attributes and operations","Private methods","UI"], a:1 },
@@ -214,7 +214,7 @@ questionBank = [
 {
   section: 16,
   title: "Dependency",
-  cheat: "Temporary usage relationship.",
+  cheat: "Dependency = temporary use (parameter, local variable).",
   questions: [
     { q:"Dependency indicates:", o:["Strong ownership","Temporary use","Whole-part","Inheritance"], a:1 },
     { q:"Dependency is drawn using:", o:["Solid line","Dashed arrow","Diamond","Triangle"], a:1 },
@@ -228,7 +228,7 @@ questionBank = [
 {
   section: 17,
   title: "Abstract Class",
-  cheat: "Cannot be instantiated.",
+  cheat: "Abstract class = cannot instantiate, used for inheritance.",
   questions: [
     { q:"An abstract class:", o:["Can be instantiated","Cannot be instantiated","Has no methods","Has no attributes"], a:1 },
     { q:"Abstract operations are:", o:["Implemented","Not implemented","Private","Static"], a:1 },
@@ -242,7 +242,7 @@ questionBank = [
 {
   section: 18,
   title: "Interface",
-  cheat: "Defines operations only.",
+  cheat: "Interface = operations only, no implementation, supports multiple inheritance.",
   questions: [
     { q:"An interface contains:", o:["Attributes","Operations only","Implementation","Objects"], a:1 },
     { q:"Interfaces define a:", o:["Class","Contract","Variable","Object"], a:1 },
@@ -256,7 +256,7 @@ questionBank = [
 {
   section: 19,
   title: "Object Diagram",
-  cheat: "Snapshot of instances at runtime.",
+  cheat: "Object diagram = runtime snapshot of objects.",
   questions: [
     { q:"Object diagram shows:", o:["Classes","Objects","Use-cases","Methods"], a:1 },
     { q:"Object diagram represents:", o:["Static structure","Runtime snapshot","Behavior","Flow"], a:1 },
@@ -270,7 +270,7 @@ questionBank = [
 {
   section: 20,
   title: "Building Class Diagram",
-  cheat: "Identify classes → attributes → operations → relationships.",
+  cheat: "Steps: classes → attributes → operations → relationships → refine.",
   questions: [
     { q:"First step in building class diagram is:", o:["Add methods","Identify classes","Define relationships","Add visibility"], a:1 },
     { q:"Attributes are added after:", o:["Relationships","Classes","Operations","Objects"], a:1 },
